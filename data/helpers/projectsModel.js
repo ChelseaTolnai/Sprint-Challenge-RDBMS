@@ -22,6 +22,15 @@ module.exports = {
 
         return db('projects').select('*').map(project => this.mapComplete(project));
     },
+    remove: function(id) {
+        return db('projects').where({ id }).del();
+    },
+    update: function(id, changes) {
+        return db('projects')
+        .where({ id })
+        .update(changes)
+        .then(count => (count > 0 ? this.get(id) : null));
+    },
     mapComplete: function(object) {
         if (object.completed === 0) {return {...object, completed: false} }
         else {return {...object, completed: true} }

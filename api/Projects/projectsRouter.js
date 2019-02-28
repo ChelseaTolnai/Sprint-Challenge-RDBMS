@@ -31,6 +31,27 @@ projectsRouter.get('/:id', projectIdExists, async (req, res, next) => {
     }
 });
 
+projectsRouter.delete('/:id', projectIdExists, async (req, res, next) => {
+    try {
+        const project = await db.get(req.params.id);
+        await db.remove(req.params.id);
+        res.status(200).json({...project, deleted: 'successful'});
+    } catch (err) {
+        next({code: 500, action: 'deleting', subject: 'project'});
+    }
+});
+
+projectsRouter.put('/:id', projectIdExists, projectCheck, async (req, res, next) => {
+    try {
+        await db.update(req.params.id, {...req.body});
+        const updatedProject = await db.get(req.params.id);
+        res.status(200).json({...updatedProject, updated: 'successful'});
+
+    } catch (error) {
+        next({code: 500, action: 'updating', subject: 'project'});
+    }
+});
+
 function projectCheck (req, res, next) {
     if (!req.body.name || !req.body.description) {
         next({code: 400, action: 'updating', subject: 'post. Post name and description required'})
