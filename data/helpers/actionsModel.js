@@ -2,4 +2,8 @@ const db = require('../dbConfig');
 
 const query = db('actions');
 
-module.exports = {};
+module.exports = {
+    insert: function(action) {
+        return query.insert(action)
+    },
+};
