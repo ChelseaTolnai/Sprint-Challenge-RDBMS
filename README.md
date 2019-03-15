@@ -33,9 +33,24 @@ This will be akin to the Web API that you built in the last sprint, only this ti
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 1. Explain the difference between `RDBMS` and `SQL`.
+
+Rational DataBase Management Systems are softwares that manage digital databases, or digital collections of data organized for easy readability and interaction. In RDBMS this organized data is stored as tables with a collection of rows and columns. Each row represents a record in the table and the row’s corresponding columns represent the record’s related fields and values. 
+
+Unlike RDBMS which are softwares, Structured Query Language is the standard language used to manage databases and the data stored within them. Most RDBMS softwares support this standard language of SQL. SQL is a set of commands used to interact with the database and its data.
+
+In summary, RDBMS is software used to store data and SQL is the language used to interact with and manipulate the data.
+
 1. Why do tables need a `primary key`?
+
+The primary key uniquely identifies each record, or row, of a table. This is needed when a record’s value(s) can have multiples of the same value(s). This unique key clearly distinguishes each record, whether the value(s) unique or not, and then each record can individually be read, found, and/or manipulated.
+
 1. What is the name given to a table column that references the primary key on another table.
+
+The column name given to the primary key is ‘id’.
+
 1. What do we need in order to have a _many to many_ relationship between two tables.
+
+In order to have a many to many relationship between two tables we need a third junction table that holds foreign keys that reference the primary keys on the related two tables.
 
 ## Project Set Up
 
